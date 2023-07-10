@@ -1,0 +1,30 @@
+<nav class="navbar navbar-teal navbar-expand-sm">
+    <div class="container">
+          <!-- Brand -->
+          <a routerLink="" class="navbar-brand text-white"><i class="fa fa-code opacity-50"></i> <span class="fw-bold mx-2">Buddies Social App</span></a>
+         <div class="collapse navbar-collapse">
+          <ul class="navbar-nav m-auto" *ngIf="isLoggedIn()">
+             <li class="nav-item">
+                <a routerLink="/profiles/dashboard" class="nav-link text-white">  <i class="fa fa fa-sitemap opacity-50"></i> Dashboard</a>
+             </li>
+          </ul>
+          <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                   <a routerLink="/developers/developer-list" class="nav-link text-white">  <i class="fa fa fa-user-tie opacity-50"></i> Developers</a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn()">
+                   <a routerLink="/users/register" class="nav-link text-white">  <i class="fa fa-user-shield opacity-50"></i> Register</a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn()">
+                   <a routerLink="/users/login" class="nav-link text-white">  <i class="fa fa-sign-in-alt opacity-50"></i> Login</a>
+                </li>
+                <!-- <li class="nav-item" *ngIf="isLoggedIn() && hasUser()">
+                <a routerLink="/users/login" class="nav-link text-white"> <img [src]="user.avatar" alt="" width="25" height="25"> {{user.name}}</a>
+             </li> -->
+                <li class="nav-item" *ngIf="isLoggedIn()">
+                <a routerLink="/users/login" class="nav-link text-white" (click)="clickLogout()">  <i class="fa fa-sign-out-alt opacity-50"></i> Logout</a>
+             </li>
+          </ul>
+         </div>
+    </div>
+ </nav>

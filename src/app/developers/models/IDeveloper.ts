@@ -1,0 +1,50 @@
+export interface IDeveloper{
+    _id: string,
+    user: User,
+    company: string,
+    website: string,
+    location: string,
+    designation: string,
+    skills: string[],
+    bio: string,
+    githubusername: string,
+    education: IEducation[],
+    experience: IExperience[],
+    social: ISocial[]
+}
+
+interface User{
+    _id: string;
+    name: string;
+    avatar: string;
+}
+
+export interface IExperience{
+    _id ?: string,
+    title: string,
+    company: string,
+    location: string,
+    from: string,
+    to: string,
+    current: boolean,
+    description: string
+}
+
+export interface IEducation{
+    _id ?: string,
+    school: string, 
+    degree: string,
+    fieldofstudy: string,
+    from: string,
+    to: string,
+    current: boolean,
+    description: string
+}
+
+export interface ISocial{
+    facebook: string,
+    instagram: string,
+    twitter: string,
+    linkedin: string,
+    youtube: string
+}

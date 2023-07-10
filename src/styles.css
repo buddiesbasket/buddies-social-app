@@ -1,1 +1,106 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu:wght@300;400&display=swap');
+body{
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: black;
+}
+.badge-teal{
+  background-color: teal;
+  /* padding: 5px 10px; */
+  color: white;
+}
+.navbar-teal{
+  background: linear-gradient(45deg,black,teal) !important;
+}
+.btn-outline-teal{
+  border-color: teal;
+  border-style: solid;
+  color: teal;
+}
+.btn-outline-teal:hover{
+  border-color: teal;
+  border-style: solid;
+  color: teal;
+}
+.btn-teal{
+  background-color: teal;
+  padding: 5px 10px;
+  color: white;
+}
+.btn-teal:hover{
+  background-color: teal;
+  color: white;
+}
+.bg-teal{
+  background-color: teal;
+}
+.bg-light-grey{
+  background-color: #d2eded;
+}
+.bg-light-teal{
+  background: linear-gradient(45deg,lightgrey,#8eeaea);
+}
+.text-teal{
+  color: teal;
+}
+.landing-page{
+  background: white url("./assets/landing-page.jpg") no-repeat scroll center;
+  background-size: cover;
+  height: 100vh;
+}
+.wrapper{
+  background-color: rgba(0,0,0,0.7);
+  height: 100%;
+}
+.btn-outline-secondary{
+  border-left: none;
+}
+.bg-danger{
+    background: linear-gradient(45deg,black,red);
+  }
+  .bg-primary{
+    background: linear-gradient(45deg,black,blue);
+  }
+  .bg-secondary{
+    background: linear-gradient(45deg,black,grey);
+  }
+  .bg-success{
+    background: linear-gradient(45deg,black,green);
+  }
+  .bg-warning{
+    background: linear-gradient(45deg,black,yellow);
+  }
+  .bg-info{
+    background: linear-gradient(45deg,black,lightskyblue);
+  }
+  
+  .btn-danger{
+    background: linear-gradient(45deg,black,red);
+  }
+  .btn-primary{
+    background: linear-gradient(45deg,black,blue);
+  }
+  .btn-success{
+    background: linear-gradient(45deg,black,green);
+  }
+  .btn-warning{
+    background: linear-gradient(45deg,black,yellow);
+  }
+  .btn-info{
+    background: linear-gradient(45deg,black,lightskyblue);
+  }
+  .btn-secondary{
+    background: linear-gradient(45deg,black,grey);
+  }
+  
+  /* Angular Form Validations */
+  .is-valid{
+    background-color: #d5fdd5 !important;
+    border-left: 10px solid lightgreen;
+  }
+  .is-invalid{
+    background-color: #fdeae2 !important;
+    border-left: 10px solid lightsalmon;
+  }
+  

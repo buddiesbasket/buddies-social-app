@@ -1,0 +1,12 @@
+<section class="landing-page">
+    <div class="wrapper">
+        <div class="d-flex flex-column justify-content-center align-items-center text-center h-100">
+            <h3 class="text-white">Welcome to <b>Angular Social App</b></h3>
+            <p class="lead px-4 text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium voluptates ullam neque. At fugit perferendis incidunt aperiam voluptatem ducimus harum repellendus! Consequatur qui culpa voluptas doloribus illum rerum iste dicta.</p>
+            <div *ngIf="!isLoggedIn()">
+                <a routerLink="/users/register" class="btn btn-outline-teal text-teal mx-3 fw-bold">Register</a>
+                <a routerLink="/users/login" class="btn btn-outline-teal text-teal fw-bold">Login</a>
+            </div>
+        </div>
+    </div>
+</section>
