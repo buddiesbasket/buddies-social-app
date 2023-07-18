@@ -3,6 +3,8 @@ import { IUser } from 'src/app/users/models/IUser';
 import { UserService } from 'src/app/users/services/user.service';
 import { IProfile } from '../../models/IProfile';
 import { ProfileService } from '../../services/profile.service';
+import { catchError } from 'rxjs';
+import { ErrorHandlerUtil } from 'src/app/errorHandlerUtil';
 
 @Component({
   selector: 'app-dashboard',
@@ -37,20 +39,35 @@ export class DashboardComponent implements OnInit{
     });
   }
 
-  public hasProfile():boolean{
-    return Object.keys(this.profile).length > 0;
-  }
+  public hasProfile(): boolean {
+    return !!this.profile && Object.keys(this.profile).length > 0;
+  }  
 
   public isLoggedIn():boolean{
     return this.userService.isLoggedIn();
   }
 
-  public clickDeleteExperience(expId){
-    this.profileService.deleteExperience(expId);
+  public clickDeleteExperience(expId: string){
+    this.profileService.deleteExperience(expId).subscribe({
+      next:(data) => {
+        this.profile = data.profile
+      },
+      error: (error) => {
+        catchError(ErrorHandlerUtil.handleError);
+      }
+    });
   }
+  
 
-  public clickDeleteEducaton(eduId){
-    this.profileService.deleteEducaton(eduId);
+  public clickDeleteEducaton(eduId: string){
+    this.profileService.deleteEducaton(eduId).subscribe({
+      next:(data) => {
+        this.profile = data.profile
+      },
+      error: (error) => {
+        catchError(ErrorHandlerUtil.handleError);
+      }
+    });
   }
 
 }

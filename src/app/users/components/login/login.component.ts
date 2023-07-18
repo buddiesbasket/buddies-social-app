@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { environment } from 'environments/environment';
 import { catchError } from 'rxjs';
 import { ErrorHandlerUtil } from 'src/app/errorHandlerUtil';
 
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit{
   }
   public showPassword: boolean = false;
   public isEmpty: boolean = false;
-  public token = environment.JWT_SECRET_KEY;
+  public token: string;
 
   constructor(private userService: UserService,
               private router: Router){}
@@ -32,17 +31,21 @@ export class LoginComponent implements OnInit{
     this.showPassword=!this.showPassword;
   }
 
-  public submitLoginForm(): void{
+  public submitLoginForm(){
     let {email, password} = this.user;
     if(email != '' && password != ''){
-      this.userService.loginUser(this.user).subscribe((response) => {
+      this.userService.loginUser(this.user).pipe(
+        catchError(ErrorHandlerUtil.handleError)
+      ).subscribe({
+        next: (response) => {
         localStorage.setItem('x-access-token', response.token);
         this.router.navigate(['/']);
       alert('Login Successful');
       this.isEmpty = false;
-      }, (error) => {
-        catchError(ErrorHandlerUtil.handleError);
-      });
+      }, 
+      error: (error) => {
+        ErrorHandlerUtil.handleError(error);
+      }});
     }
     else{
       alert('Please fill all the fields');

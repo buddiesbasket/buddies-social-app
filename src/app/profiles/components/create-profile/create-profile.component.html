@@ -7,10 +7,59 @@
             </div>
         </div>
     </div>
-</section>
-<section>
+</section> 
+<div>
+    <!-- <app-edit-profile [(profileData)]="profileData"></app-edit-profile> -->
+    <app-edit-profile (sectionContent)="handleSectionContent($event)">></app-edit-profile>
+    <app-add-education [(profileData)]="profileData"></app-add-education>
+    <app-add-experience [(profileData)]="profileData"></app-add-experience>
+</div>
+<!-- <h3>Profile Data:</h3>
+<pre>{{ profileData | json }}</pre> -->
+<!-- <section>
     <div class="container">
         <div class="row">
+            <div class="col-md-6">
+                <div class="card" *ngIf="hasProfile()">
+                    <div class="card-header bg-light-teal">
+                        <span class="text-teal fs-4 fw-bold">Profile Details</span>
+                        <div class="form-check form-switch float-end">
+                            <input class="form-check-input bg-teal" type="checkbox" role="switch" (click)="updateProfile()">
+                            <label class="form-check-label text-teal fw-bold" for="flexSwitchCheckDefault">Update</label>
+                        </div>
+                    </div>
+                    <div class="card-body bg-light-teal">
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item">
+                                <small>Company: {{profile.company}}</small><br>
+                                <small>Website: {{profile.website}}</small><br>
+                                <small>Designation: {{profile.designation}}</small><br>
+                                <small>Skills: {{profile.skills}}</small><br>
+                                <small>Biography: {{profile.bio}}</small><br>
+                                <small>GithubUserName: {{profile.githubusername}}</small><br>
+                                <small>FacebookURL: {{social.facebook}}</small><br>
+                                <small>YoutubeURL: {{social.youtube}}</small><br>
+                                <small>InstagramURL: {{social.instagram}}</small><br>
+                                <small>TwitterURL: {{social.twitter}}</small><br>
+                                <small>LinkedinURL: {{social.linkedin}}</small><br>
+                                <small>School: {{edu.school}}</small><br>
+                                <small>Degree: {{edu.degree}}</small><br>
+                                <small>Field of Study: {{edu.fieldofstudy}}</small><br>
+                                <small>From: {{edu.from | date: 'dd-MMM-YYYY'}}</small><br>
+                                <small>To: {{edu.to | date: 'dd-MMM-YYYY'}}</small><br>
+                                <small>Description: {{edu.description}}</small><br>
+                                <small>Title: {{exp.title}}</small><br>
+                                <small>Company: {{exp.company}}</small><br>
+                                <small>Location: {{exp.location}}</small><br>
+                                <small>From: {{exp.from | date: 'dd-MMM-YYYY'}}</small><br>
+                                <small>To: {{exp.to | date: 'dd-MMM-YYYY'}}</small><br>
+                                <small>Current: {{exp.current}}</small><br>
+                                <small>Description: {{exp.description}}</small><br>
+                                <button class="btn btn-danger btn-sm" (click)="deleteExperience(exp._id)">Delete</button>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
             <div class="col-md-6">
                 <form>
                     <div>
@@ -144,6 +193,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <div style="margin-bottom: 200px;"></div>

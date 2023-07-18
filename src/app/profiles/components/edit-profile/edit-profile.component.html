@@ -1,4 +1,4 @@
-<section class="mt-3">
+<section class="mt-3" #firstSection>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -8,21 +8,77 @@
         </div>
     </div>
 </section>
-<section>
-    <div class="container">
+<!-- <input [(ngModel)]="profileData.social">
+<button (click)="emitProfileData()">Save</button> -->
+<!-- <pre>{{profile | json}}</pre>  -->
+<section #secondSection>
+    <div class="container"*ngIf="hasProfile()">
         <div class="row">
             <div class="col-md-6">
-                <form>
+                <div class="card" *ngIf="hasProfile()">
+                    <div class="card-header bg-light-teal">
+                        <span class="text-teal fs-4 fw-bold">Profile Details</span>
+                        <div class="form-check form-switch float-end">
+                            <input class="form-check-input bg-teal" type="checkbox" role="switch" (click)="updateProfile()">
+                            <label class="form-check-label text-teal fw-bold" for="flexSwitchCheckDefault">Update</label>
+                        </div>
+                    </div>
+                    <div class="card-body bg-light-teal">
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item">
+                                <small>Company: {{profile.company}}</small><br>
+                                <small>Website: {{profile.website}}</small><br>
+                                <small>Designation: {{profile.designation}}</small><br>
+                                <small>Skills: {{profile.skills}}</small><br>
+                                <small>Biography: {{profile.bio}}</small><br>
+                                <small>GithubUserName: {{profile.githubusername}}</small><br>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card mt-3" *ngIf="hasSocial()">
+                        <div class="card-header bg-light-teal">
+                            <span class="text-teal fs-4 fw-bold">Social Details</span>
+                            <div class="form-check form-switch float-end">
+                                <input class="form-check-input bg-teal" type="checkbox" role="switch" (click)="updateSocialProfile()">
+                                <label class="form-check-label text-teal fw-bold" for="flexSwitchCheckDefault">Update</label>
+                            </div>
+                        </div>
+                        <div class="card-body bg-light-teal">
+                            <ul class="list-group mb-3" *ngFor="let social of profile.social">
+                                <li class="list-group-item">
+                                    <small>FacebookURL: {{social.facebook}}</small><br>
+                                    <small>YoutubeURL: {{social.youtube}}</small><br>
+                                    <small>InstagramURL: {{social.instagram}}</small><br>
+                                    <small>TwitterURL: {{social.twitter}}</small><br>
+                                    <small>LinkedinURL: {{social.linkedin}}</small><br>
+                                    <button class="btn btn-danger btn-sm" (click)="deleteSocialProfile(social._id)">Delete</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form #editProfileForm="ngForm" (submit)="submitEditProfileForm()" *ngIf="updateProfileToggler">
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-light-teal">Company</span>
-                        <input type="text" class="form-control">
+                        <input name="company"
+                        company="ngModel"
+                        [(ngModel)]="profile.company"
+                        type="text" class="form-control" required>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-light-teal">Website</span>
-                        <input type="text" class="form-control">
+                        <input name="website"
+                        website="ngModel"
+                        [(ngModel)]="profile.website"
+                        type="text" class="form-control" required>
                     </div>
-                    <div class="mb-3">
-                       <select name="Select your Designation" class="form-control form-select">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-light-teal">Designation</span>
+                        <select name="designation" 
+                        designation="ngModel"
+                        [(ngModel)]="profile.designation" class="form-control form-select" required>
                         <option selected>Select your Designation</option>
                         <option value="Jr Software Engineer">Jr Software Engineer</option>
                         <option value="Sr Software Engineer">Sr Software Engineer</option>
@@ -34,43 +90,75 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-light-teal">Skills</span>
-                        <input type="text" class="form-control">
+                        <input name="skills"
+                        skills="ngModel"
+                        [(ngModel)]="profile.skills"                        
+                        type="text" class="form-control" required>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-light-teal">Biography</span>
-                        <input type="text" class="form-control">
+                        <input name="biography"
+                        biography="ngModel"
+                        [(ngModel)]="profile.bio"
+                        type="text" class="form-control" required>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Github User Name</span>
-                        <input type="text" class="form-control">
+                        <span class="input-group-text bg-light-teal">GithubUserName</span>
+                        <input name="githubusername"
+                        githubusername="ngModel"
+                        [(ngModel)]="profile.githubusername"
+                        type="text" class="form-control" required>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Facebook URL</span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Youtube URL</span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Instagram URL</span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Twitter URL</span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Linkedin URL</span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div>
+                    <div class="mb-3">
                         <input type="submit" class="btn btn-outline-teal text-teal fw-bold mx-3" value="Update">
-                        <a routerLink="/profiles/dashboard" class="btn btn-outline-warning text-warning fw-bold">Back</a>
+                        <a routerLink="/profiles/dashboard" class="btn btn-outline-warning text-warning fw-bold">Back</a><hr>
+                    </div>
+                </form>
+                <form #editSocialForm="ngForm" (submit)="submitEditSocial()" *ngIf="updateSocialToggler">
+                    <div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">FacebookURL</span>
+                            <input name="facebookurl"
+                            facebookurl="ngModel"
+                            [(ngModel)]="newSocial.facebook"
+                            type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">YoutubeURL</span>
+                            <input name="youtubeurl"
+                            youtubeurl="ngModel"
+                            [(ngModel)]="newSocial.youtube"
+                            type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">InstagramURL</span>
+                            <input name="instagramurl"
+                            instagramurl="ngModel"
+                            [(ngModel)]="newSocial.instagram"
+                            type="text" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">TwitterURL</span>
+                            <input name="twitterurl"
+                            twitterurl="ngModel"
+                            [(ngModel)]="newSocial.twitter"
+                            type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">LinkedinURL</span>
+                            <input name="linkedinurl"
+                            linkedinurl="ngModel"
+                            [(ngModel)]="newSocial.linkedin"
+                            type="text" class="form-control" required>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-outline-teal text-teal fw-bold mx-3" value="Update">
+                            <a routerLink="/profiles/dashboard" class="btn btn-outline-warning text-warning fw-bold">Back</a><hr>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
-<div style="margin-bottom: 200px;"></div>
+<div style="margin-bottom: 50px;"></div>

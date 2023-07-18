@@ -8,47 +8,97 @@
         </div>
     </div>
 </section>
+<!-- <input [(ngModel)]="profileData.education">
+<button (click)="emitProfileData()">Save</button> -->
 <section>
-    <div class="container">
+    <div class="container" *ngIf="hasProfile()">
         <div class="row">
             <div class="col-md-6">
-                <form>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">School</span>
-                        <input type="text" class="form-control">
+                <div class="card">
+                    <div class="card-header bg-light-teal">
+                        <span class="text-teal fs-4 fw-bold">Education Details</span>
+                        <div class="form-check form-switch float-end">
+                            <input class="form-check-input bg-teal" type="checkbox" role="switch" (click)="updateEducation()">
+                            <label class="form-check-label text-teal fw-bold" for="flexSwitchCheckDefault">Add</label>
+                        </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Degree</span>
-                        <input type="text" class="form-control">
+                    <div class="card-body bg-light-teal">
+                        <ul class="list-group mb-3" *ngFor="let edu of profile.education">
+                            <li class="list-group-item">
+                                <small>School: {{edu.school}}</small><br>
+                                <small>Degree: {{edu.degree}}</small><br>
+                                <small>Field of Study: {{edu.fieldofstudy}}</small><br>
+                                <small>From: {{edu.from | date: 'dd-MMM-YYYY'}}</small><br>
+                                <small>To: {{edu.to | date: 'dd-MMM-YYYY'}}</small><br>
+                                <small>Description: {{edu.description}}</small><br>
+                                <button class="btn btn-danger btn-sm" (click)="deleteEducation(edu._id)">Delete</button>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Field of Study</span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">From Date</span>
-                        <input type="date" class="form-control">
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" >
-                        <label class="form-check-label">
-                          Current
-                        </label>
-                      </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">To Date</span>
-                        <input type="date" class="form-control">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-light-teal">Description</span>
-                        <textarea rows="4" class="form-control"></textarea>
-                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form #addEducationForm="ngForm" (submit)="submitAddEducation()" *ngIf="updateEduToggler">
                     <div>
-                        <input type="submit" class="btn btn-outline-teal text-teal fw-bold mx-3" value="Update">
-                        <a routerLink="/profiles/dashboard" class="btn btn-outline-warning text-warning fw-bold">Back</a>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">School</span>
+                            <input name="school"
+                            school="ngModel"
+                            [(ngModel)]="newEducation.school" required
+                            type="text" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">Degree</span>
+                            <input name="degree"
+                            degree="ngModel"
+                            [(ngModel)]="newEducation.degree" required
+                            type="text" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">FieldOfStudy</span>
+                            <input name="fieldofstudy"
+                            fieldofstudy="ngModel"
+                            [(ngModel)]="newEducation.fieldofstudy" required
+                            type="text" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">FromDate</span>
+                            <input name="from"
+                            from="ngModel"
+                            [(ngModel)]="newEducation.from" required
+                            type="date" class="form-control">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input name="current"
+                            current="ngModel"
+                            [(ngModel)]="newEducation.current" required
+                            class="form-check-input" type="checkbox" >
+                            <label class="form-check-label">
+                              Current
+                            </label>
+                          </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">ToDate</span>
+                            <input name="to"
+                            to="ngModel"
+                            [(ngModel)]="newEducation.to" required
+                            type="date" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light-teal">Description</span>
+                            <textarea name="description"
+                            description="ngModel"
+                            [(ngModel)]="newEducation.description" required
+                            rows="4" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-outline-teal text-teal fw-bold mx-3" value="Update">
+                            <a routerLink="/profiles/dashboard" class="btn btn-outline-warning text-warning fw-bold">Back</a><hr>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+<div style="margin-bottom: 50px;"></div>

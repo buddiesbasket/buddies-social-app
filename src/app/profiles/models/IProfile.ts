@@ -36,6 +36,7 @@ export interface IEducation{
 }
 
 export interface ISocial{
+    _id ?: string,
     facebook: string,
     instagram: string,
     twitter: string,

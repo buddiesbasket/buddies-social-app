@@ -6,7 +6,7 @@ body{
     color: black;
 }
 .badge-teal{
-  background-color: teal;
+  background-color: teal !important;
   /* padding: 5px 10px; */
   color: white;
 }
@@ -14,35 +14,35 @@ body{
   background: linear-gradient(45deg,black,teal) !important;
 }
 .btn-outline-teal{
-  border-color: teal;
+  border-color: teal !important;
   border-style: solid;
-  color: teal;
+  color: teal !important;
 }
 .btn-outline-teal:hover{
-  border-color: teal;
+  border-color: teal !important;
   border-style: solid;
-  color: teal;
+  color: teal !important;
 }
 .btn-teal{
-  background-color: teal;
+  background-color: teal !important;
   padding: 5px 10px;
   color: white;
 }
 .btn-teal:hover{
-  background-color: teal;
+  background-color: teal !important;
   color: white;
 }
 .bg-teal{
-  background-color: teal;
+  background-color: teal !important;
 }
 .bg-light-grey{
-  background-color: #d2eded;
+  background-color: #d2eded !important;
 }
 .bg-light-teal{
-  background: linear-gradient(45deg,lightgrey,#8eeaea);
+  background: linear-gradient(45deg,lightgrey,#8eeaea) !important;
 }
 .text-teal{
-  color: teal;
+  color: teal !important;
 }
 .landing-page{
   background: white url("./assets/landing-page.jpg") no-repeat scroll center;
@@ -102,5 +102,10 @@ body{
   .is-invalid{
     background-color: #fdeae2 !important;
     border-left: 10px solid lightsalmon;
+  }
+  .truncated-text {
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) at the end of the truncated text */
   }
   

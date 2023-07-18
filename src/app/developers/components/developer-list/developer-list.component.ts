@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IDeveloper } from '../../models/IDeveloper';
-import { HttpClient } from '@angular/common/http';
 import { DeveloperService } from '../../services/developer.service';
 
 
@@ -14,8 +13,7 @@ export class DeveloperListComponent implements OnInit{
   public developers: IDeveloper[] = [] as IDeveloper[];
   public loading: boolean = false;
 
-  constructor(private developerService: DeveloperService,
-              private httpClient: HttpClient){}
+  constructor(private developerService: DeveloperService){}
 
   ngOnInit() {
     this.developerService.getAllDevelopers().subscribe({

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUser } from '../models/IUser';
 import { Observable, catchError, retry } from 'rxjs';
@@ -32,7 +32,8 @@ export class UserService{
   //get a user info
   public getUserInfo():Observable<{user: IUser}>{
     let dataUrl = `${environment.apiUrl}/users/`;
-    return this.httpClient.get<{user: IUser}>(dataUrl).pipe(
+    const headers = new HttpHeaders().set('x-access-token', `${this.getToken()}`);
+    return this.httpClient.get<{user: IUser}>(dataUrl, { headers }).pipe(
       retry(1),
       catchError(ErrorHandlerUtil.handleError)
     )
